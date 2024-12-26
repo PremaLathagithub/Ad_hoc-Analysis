@@ -1,0 +1,25 @@
+/*4. Follow-up: Which segment had the most increase in unique products in
+2021 vs 2020? The final output contains these fields,
+segment
+product_count_2020
+product_count_2021
+difference*/
+
+WITH X AS 
+	(SELECT P.segment AS A , COUNT(DISTINCT(FS.product_code)) AS B 
+    FROM dim_product P, fact_sales_monthly FS
+    WHERE P.product_code = FS.product_code
+    GROUP BY FS.fiscal_year, P.segment
+    HAVING FS.fiscal_year = "2020"),
+Y AS
+    (
+	SELECT P.segment AS C , COUNT(DISTINCT(FS.product_code)) AS D 
+    FROM dim_product P, fact_sales_monthly FS
+    WHERE P.product_code = FS.product_code
+    GROUP BY FS.fiscal_year, P.segment
+    HAVING FS.fiscal_year = "2021"
+    )     
+    
+SELECT X.A AS segment, X.B AS product_count_2020, Y.D AS product_count_2021, (Y.D-X.B) AS difference  
+FROM X, Y
+WHERE X.A = Y.C ;
