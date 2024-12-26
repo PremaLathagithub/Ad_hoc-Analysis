@@ -1,0 +1,13 @@
+/*6. Generate a report which contains the top 5 customers who received an
+average high pre_invoice_discount_pct for the fiscal year 2021 and in the
+Indian market. The final output contains these fields,
+customer_code
+customer
+average_discount_percentage*/
+
+select i.customer_code,c.customer,round(avg(i.pre_invoice_discount_pct)*100,2) as avg_dis_pct
+from
+fact_pre_invoice_deductions i 
+join dim_customer c using (customer_code)
+where fiscal_year=2021 and c.market='india' group by i.customer_code,customer
+order by avg_dis_pct desc limit 5; 
