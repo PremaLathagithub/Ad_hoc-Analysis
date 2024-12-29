@@ -11,8 +11,8 @@ SQL Files: The SQL queries for each of the ten ad hoc requests can be found in t
 
 
 ### Skills Learnt
-1.SQL Query Writing using CTE,rank,joins, date functions,sub-queries,numeric functions etc.
-2.Data Extraction and Transformation
-3.Data Analysis and Interpretation
-4.Report Generation
-5.Problem Solving and Decision Making
+-SQL Query Writing using CTE,rank,joins, date functions,sub-queries,numeric functions etc.
+-Data Extraction and Transformation
+-Data Analysis and Interpretation
+-Report Generation
+-Problem Solving and Decision Making
